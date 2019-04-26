@@ -1,2 +1,0 @@
-# nohtyp
-python_test
