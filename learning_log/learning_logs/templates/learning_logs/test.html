@@ -1,4 +1,4 @@
-<!-- <form name='form' id='form'>
+<form name='form' id='form'>
     <input type='button' name='submit' value='送出' onclick='processFormData();' />
   </form>
 <script>
@@ -22,14 +22,38 @@
     };
     xhr.send(JSON.stringify({"requests":[{"image":{"source":{"imageUri":"https://tix.brothers.tw/pic.aspx?TYPE=UTK0205"}},"features":[{"type":"TEXT_DETECTION","maxResults":1}]}]}));
   }
+
+    var a=_.alert('aaa');
+    // var b=this.JSON
+
+    function toDataURL(src, callback, outputFormat) {
+    var img = new Image();
+    img.crossOrigin = 'Anonymous';
+    img.onload = function() {
+        var canvas = document.createElement('CANVAS');
+        var ctx = canvas.getContext('2d');
+        var dataURL;
+        canvas.height = this.naturalHeight;
+        canvas.width = this.naturalWidth;
+        ctx.drawImage(this, 0, 0);
+        dataURL = canvas.toDataURL(outputFormat);
+        callback(dataURL);
+    };
+    img.src = src;
+    if (img.complete || img.complete === undefined) {
+        img.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
+        img.src = src;
+    }
+    }
+
+    toDataURL(
+    'https://tix.brothers.tw/pic.aspx?TYPE=UTK0205&ts=1557128200744',
+    function(dataUrl) {
+        console.log('RESULT:', dataUrl)
+    }
+    )
 </script> -->
 
 
-<!-- <p> hello,this is weiting's learning_log </p> -->
 
-
-{% extends "learning_logs/base.html" %}
-
-{% block content %}
-<p>hello,this is weiting's learning_log</p>
-{% endblock content %}
+<!-- <p> hello,this is weiting's learning_log </p>
